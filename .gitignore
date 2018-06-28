@@ -34,3 +34,4 @@
 .DS_Store
 Sources/cmake-build-debug/
 Sources/compile_commands.json
+Sources/.vscode

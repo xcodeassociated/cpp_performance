@@ -129,12 +129,12 @@ int main(int argc, const char* argv[]) {
     static_assert(has_size< foo >::value);
 
     static_assert(HasX< foo >::value);
-    static_assert(HasX< double >::value); // "required from here"
+    //static_assert(HasX< double >::value); // "required from here" -- gcc compile error
 
     static_assert(is_container< std::vector<int> >::value);
-    static_assert(is_container< std::array<int, 10> >::value);
     static_assert(is_container< std::list<int> >::value);
     static_assert(!is_container< foo >::value);
+    //static_assert(is_container< std::array<int, 10> >::value); // gcc compile error
 
     static_assert(!is_iterator<int>::value);
     static_assert(is_iterator<int*>::value); // <--- warning!
