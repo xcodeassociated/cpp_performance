@@ -3,22 +3,12 @@
 #include <iostream>
 #include <thread>
 #include <future>
-#include <ctime>
 
 int main(int argc, const char* argv[]) {
     (void)argc;
     (void)argv;
     
-    auto fibonacci_task = [](const int &number) -> uint64_t{
-        // NOTE: random getter to disable modern CPU branch-prediction and OS scheduler optimization
-        // this (may) make a run-time duration non deterministic in a micro-seconds scale.
-        // In order to get more random values Pseudo-random number generation such as
-        // `mt19937` or `minstd_rand` should be used
-        {
-            std::srand(std::time(nullptr));
-            volatile auto x = std::rand();
-            (void) x;
-        }
+    auto fibonacci_task = [](const int &number) -> uint64_t {
 
         // NOTE: iterative algorithm
         uint64_t f = 0, f0 = 0, f1 = 1;
